@@ -13,6 +13,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
         appBarTheme: AppBarTheme(color: Colors.teal, centerTitle: true),
+        bottomAppBarTheme: BottomAppBarTheme(color: Colors.teal),
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: Colors.orange,
+        ),
       ),
       home: Burger(),
       debugShowCheckedModeBanner: false,
@@ -54,6 +58,40 @@ class _BurgerState extends State<Burger> {
             ]),
           ),
         ],
+      ),
+      extendBody: true,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        shape: CircleBorder(),
+        onPressed: () {},
+        child: Icon(Icons.home, color: Colors.white),
+      ),
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(45)),
+        child: Container(
+          color: Colors.black38,
+          child: BottomAppBar(
+            shape: CircularNotchedRectangle(),
+            child: Row(
+              children: [
+                Spacer(),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.add_alert),
+                  color: Colors.white,
+                ),
+                Spacer(),
+                Spacer(),
+                IconButton(
+                  onPressed: () {},
+                  icon: Icon(Icons.turned_in),
+                  color: Colors.white,
+                ),
+                Spacer(),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }
