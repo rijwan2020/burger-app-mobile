@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'header.dart';
+import 'categories.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,6 +53,7 @@ class _BurgerState extends State<Burger> {
             ],
           ),
           Header(),
+          Categories(),
           SliverList(
             delegate: SliverChildListDelegate([
               Text("Burger", style: TextStyle(fontSize: 300)),
