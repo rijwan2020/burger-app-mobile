@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'header.dart';
 import 'categories.dart';
 import 'burger_list.dart';
+import 'burger_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: Burger(),
+      routes: {BurgerPage.tag: (_) => BurgerPage()},
       debugShowCheckedModeBanner: false,
     );
   }
@@ -57,7 +59,8 @@ class _BurgerState extends State<Burger> {
           ),
           Header(),
           Categories(),
-          BurgerList(),
+          BurgerList(row: 1),
+          BurgerList(row: 2),
         ],
       ),
       extendBody: true,

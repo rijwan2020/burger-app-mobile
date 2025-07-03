@@ -1,6 +1,10 @@
+import 'package:burger_app/burger_page.dart';
 import 'package:flutter/material.dart';
 
 class BurgerList extends StatefulWidget {
+  final int row;
+  BurgerList({required this.row});
+
   @override
   State<BurgerList> createState() => _BurgerListState();
 }
@@ -9,24 +13,24 @@ class _BurgerListState extends State<BurgerList> {
   @override
   Widget build(BuildContext context) {
     int item = 10;
-    Widget Burger1Image = Container(
+    Widget burger1Image = Container(
       height: 160,
       child: Image.asset("images/burger-1.png"),
     );
-    Widget Burger2Image = Container(
+    Widget burger2Image = Container(
       height: 125,
       child: Image.asset("images/burger-2.png"),
     );
 
     return SliverToBoxAdapter(
       child: Container(
-        height: 240,
+        height: widget.row == 2 ? 330 : 240,
         margin: EdgeInsets.only(top: 10),
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: item,
           itemBuilder: (context, index) {
-            bool reverse = index.isEven;
+            bool reverse = widget.row == 2 ? index.isEven : index.isOdd;
             return Stack(
               children: [
                 Container(
@@ -38,7 +42,7 @@ class _BurgerListState extends State<BurgerList> {
                   ),
                   child: GestureDetector(
                     onTap: () {
-                      // TODO Navigate
+                      Navigator.of(context).pushNamed(BurgerPage.tag);
                     },
                     child: Card(
                       color: Theme.of(context).cardColor,
@@ -57,7 +61,7 @@ class _BurgerListState extends State<BurgerList> {
                         child: Column(
                           children: [
                             Text(
-                              "Burger",
+                              reverse ? "Chicken Burger" : "Cheese Burger",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
@@ -98,9 +102,9 @@ class _BurgerListState extends State<BurgerList> {
                   top: reverse ? 70 : 50,
                   child: GestureDetector(
                     onTap: () {
-                      // TODO navigate
+                      Navigator.of(context).pushNamed(BurgerPage.tag);
                     },
-                    child: reverse ? Burger2Image : Burger1Image,
+                    child: reverse ? burger2Image : burger1Image,
                   ),
                 ),
               ],
