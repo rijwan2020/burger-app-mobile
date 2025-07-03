@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'header.dart';
 import 'categories.dart';
+import 'burger_list.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,6 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        primaryColor: Colors.teal,
+        cardColor: Colors.teal,
         appBarTheme: AppBarTheme(color: Colors.teal, centerTitle: true),
         bottomAppBarTheme: BottomAppBarTheme(color: Colors.teal),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
@@ -54,11 +57,7 @@ class _BurgerState extends State<Burger> {
           ),
           Header(),
           Categories(),
-          SliverList(
-            delegate: SliverChildListDelegate([
-              Text("Burger", style: TextStyle(fontSize: 300)),
-            ]),
-          ),
+          BurgerList(),
         ],
       ),
       extendBody: true,
